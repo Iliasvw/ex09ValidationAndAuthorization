@@ -166,8 +166,8 @@ namespace SportsStore.Tests.Controllers
         {
             _mockProductRepository.Setup(p => p.Add(It.IsNotNull<Product>()));
 
-            _nieuwProduct.Price = 0;
             EditViewModel productVm = new EditViewModel(_nieuwProduct);
+            productVm.Price = -1;
             _productController.ModelState.AddModelError("key", "errorMessage");
             _productController.Create(productVm);
             _mockProductRepository.Verify(m => m.Add(It.IsNotNull<Product>()), Times.Never);
@@ -176,8 +176,8 @@ namespace SportsStore.Tests.Controllers
         [Fact]
         public void CreatePostGivenInvalidModelShouldReturnViewModel()
         {
-            _nieuwProduct.Price = 0;
             EditViewModel productVm = new EditViewModel(_nieuwProduct);
+            productVm.Price = -1;
             _productController.ModelState.AddModelError("key", "errorMessage");
             ViewResult result = _productController.Create(productVm) as ViewResult;
             Assert.Equal(productVm, result?.Model as EditViewModel);

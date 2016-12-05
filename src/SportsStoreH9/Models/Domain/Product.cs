@@ -6,12 +6,23 @@ namespace SportsStore.Models.Domain
     [JsonObject(MemberSerialization.OptIn)]
     public class Product
     {
+        private int _price;
+
         #region Properties
         [JsonProperty]
         public int ProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Price { get; set; }
+        public int Price
+        {
+            get { return _price; }
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException("Price must be greater than 0");
+                _price = value;
+            }
+        }
         public bool InStock { get; set; }
         public Availability Availability { get; set; }
       	public DateTime? AvailableTill { get; set; }

@@ -21,6 +21,7 @@ namespace SportsStore.Tests.Data
             _antwerpen = new City { Name = "Antwerpen", Postalcode = "3000" };
            _watersports = new Category( "WaterSports");
             _soccer = new Category("Soccer" );
+            _soccer.CategoryId = 2;
             _chess = new Category( "Chess");
             _soccer.AddProduct("Football", 25, "WK colors");
             Football.ProductId = 1;
