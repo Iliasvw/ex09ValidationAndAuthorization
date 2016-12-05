@@ -30,9 +30,9 @@ namespace SportsStore.Tests.Models.Domain
         {
             _cart.AddLine(_p1, 1);
             _cart.AddLine(_p2, 10);
-            Assert.Equal(_cart.NumberOfItems, 2);
-            Assert.Equal(_cart.CartLines.First(l => l.Product.Equals(_p1)).Quantity, 1);
-            Assert.Equal(_cart.CartLines.First(l => l.Product.Equals(_p2)).Quantity, 10);
+            Assert.Equal(2,_cart.NumberOfItems);
+            Assert.Equal(1,_cart.CartLines.First(l => l.Product.Equals(_p1)).Quantity);
+            Assert.Equal(10,_cart.CartLines.First(l => l.Product.Equals(_p2)).Quantity);
         }
 
         [Fact]
@@ -41,9 +41,9 @@ namespace SportsStore.Tests.Models.Domain
             _cart.AddLine(_p1, 1);
             _cart.AddLine(_p2, 10);
             _cart.AddLine(_p1, 3);
-            Assert.Equal(_cart.NumberOfItems, 2);
-            Assert.Equal(_cart.CartLines.First(l => l.Product.Equals(_p1)).Quantity, 4);
-            Assert.Equal(_cart.CartLines.First(l => l.Product.Equals(_p2)).Quantity, 10);
+            Assert.Equal(2,_cart.NumberOfItems);
+            Assert.Equal(4,_cart.CartLines.First(l => l.Product.Equals(_p1)).Quantity);
+            Assert.Equal(10,_cart.CartLines.First(l => l.Product.Equals(_p2)).Quantity);
         }
 
         [Fact]
@@ -52,8 +52,8 @@ namespace SportsStore.Tests.Models.Domain
             _cart.AddLine(_p1, 1);
             _cart.AddLine(_p2, 10);
             _cart.RemoveLine(_p2);
-            Assert.Equal(_cart.NumberOfItems, 1);
-            Assert.Equal(_cart.CartLines.First(l => l.Product.Equals(_p1)).Quantity, 1);
+            Assert.Equal(1,_cart.NumberOfItems);
+            Assert.Equal(1,_cart.CartLines.First(l => l.Product.Equals(_p1)).Quantity);
         }
 
         [Fact]
@@ -63,7 +63,7 @@ namespace SportsStore.Tests.Models.Domain
             _cart.AddLine(_p2, 10);
             _cart.AddLine(_p1, 3);
             _cart.Clear();
-            Assert.Equal(_cart.NumberOfItems, 0);
+            Assert.Equal(0,_cart.NumberOfItems);
         }
 
         [Fact]

@@ -23,6 +23,7 @@ namespace SportsStore.Controllers
             return View(cart.CartLines);
         }
 
+        [HttpPost]
         public IActionResult Add(int id, int quantity, Cart cart)
         {
             Product product = _productRepository.GetById(id);
@@ -34,6 +35,7 @@ namespace SportsStore.Controllers
             return RedirectToAction(nameof(Index), "Store");
         }
         
+        [HttpPost]
         public IActionResult Remove(int id, Cart cart)
         {
             Product product = _productRepository.GetById(id);
@@ -42,12 +44,14 @@ namespace SportsStore.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
         public IActionResult Plus(int id, Cart cart)
         {
             cart.IncreaseQuantity(id);
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
         public IActionResult Min(int id, Cart cart)
         {
             cart.DecreaseQuantity(id);

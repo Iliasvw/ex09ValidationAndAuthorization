@@ -22,7 +22,7 @@ namespace SportsStore.Tests.Models.Domain
         public void Add_NewProduct_AddsProduct()
         {
             _category.AddProduct("Football", 10, null);
-            Assert.Equal(_category.Products.Count, 1);
+            Assert.Equal(1,_category.Products.Count);
         }
 
        [Fact]
@@ -30,7 +30,7 @@ namespace SportsStore.Tests.Models.Domain
         {
             _category.AddProduct("Football", 10, null);
             _category.AddProduct("Football", 10, null);
-            Assert.Equal(_category.Products.Count, 1);
+            Assert.Equal(1,_category.Products.Count);
         }
 
         [Fact]
