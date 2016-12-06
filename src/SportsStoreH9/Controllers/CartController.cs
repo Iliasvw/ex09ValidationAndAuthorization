@@ -19,7 +19,7 @@ namespace SportsStore.Controllers
          {
             if (cart.NumberOfLines == 0)
                 return View("EmptyCart");
-            ViewBag.Total = cart.TotalValue;      
+            ViewData["Total"] = cart.TotalValue;      
             return View(cart.CartLines);
         }
 
@@ -30,7 +30,7 @@ namespace SportsStore.Controllers
             if (product != null)
             {
                 cart.AddLine(product, quantity);
-               TempData["Info"] = "Product " + product.Name + " has been added to the cart";
+               TempData["message"] = "Product " + product.Name + " has been added to the cart";
             }
             return RedirectToAction(nameof(Index), "Store");
         }
